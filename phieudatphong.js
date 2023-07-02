@@ -1,5 +1,5 @@
 class PhieuDatPhong{
-    constructor(MaPhieu, TenKhachHang, SDT, Email, DiaChi, SoNguoiLon, SoTreEm, NgayDenNhan, NgayTra, MaLoaiPhong, SoLuongPhong, MaDichVu, GhiChu){
+    constructor(MaPhieu, TenKhachHang, SDT, Email, DiaChi, SoNguoiLon, SoTreEm, NgayDenNhan, NgayTra, MaLoaiPhong, MaDichVu, GhiChu){
         this.MaPhieu = MaPhieu;
         this.TenKhachHang = TenKhachHang;
         this.SDT = SDT;
@@ -10,7 +10,6 @@ class PhieuDatPhong{
         this.NgayDenNhan = NgayDenNhan;
         this.NgayTra = NgayTra;
         this.MaLoaiPhong = MaLoaiPhong; 
-        this.SoLuongPhong = SoLuongPhong;
         this.MaDichVu = MaDichVu; 
         this.GhiChu = GhiChu
         

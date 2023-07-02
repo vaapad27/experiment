@@ -40,7 +40,6 @@ router.route('/phieudatphong').post((request, response) => {
         formData.NgayDenNhan,
         formData.NgayTra,
         formData.MaLoaiPhong,
-        formData.SoLuongPhong,
         formData.MaDichVu,
         formData.GhiChu
     );

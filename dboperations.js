@@ -20,10 +20,10 @@ async function addPhieuDatPhong(phieuDatPhong) {
     try {
         let pool = await sql.connect(config);
         let query =
-            `INSERT INTO PhieuDatPhong (MaPhieu, TenKhachHang, SDT, Email, DiaChi, SoNguoiLon, SoTreEm, NgayDenNhan, NgayTra, MaLoaiPhong, SoLuongPhong, MaDichVu, GhiChu)
+            `INSERT INTO PhieuDatPhong (MaPhieu, TenKhachHang, SDT, Email, DiaChi, SoNguoiLon, SoTreEm, NgayDenNhan, NgayTra, MaLoaiPhong, MaDichVu, GhiChu)
             VALUES ('${phieuDatPhong.MaPhieu}', '${phieuDatPhong.TenKhachHang}', '${phieuDatPhong.SDT}', '${phieuDatPhong.Email}', '${phieuDatPhong.DiaChi}',
             '${phieuDatPhong.SoNguoiLon}', '${phieuDatPhong.SoTreEm}', '${phieuDatPhong.NgayDenNhan}', '${phieuDatPhong.NgayTra}', '${phieuDatPhong.MaLoaiPhong}',
-            '${phieuDatPhong.SoLuongPhong}', '${phieuDatPhong.MaDichVu}', '${phieuDatPhong.GhiChu}')`;
+            , '${phieuDatPhong.MaDichVu}', '${phieuDatPhong.GhiChu}')`;
 
         let result = await pool.request().query(query);
         return result;
