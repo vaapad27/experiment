@@ -1,5 +1,6 @@
 var config = require('./dbconfig');
 const sql = require('mssql');
+const PhieuDatPhong = require('./phieudatphong');
 
 
 async function datPhong(){
@@ -19,14 +20,24 @@ async function datPhong(){
 async function addPhieuDatPhong(phieuDatPhong) {
     try {
         let pool = await sql.connect(config);
-        let query =
-            `INSERT INTO PhieuDatPhong (MaPhieu, TenKhachHang, SDT, Email, DiaChi, SoNguoiLon, SoTreEm, NgayDenNhan, NgayTra, MaLoaiPhong, MaDichVu, GhiChu)
-            VALUES ('${phieuDatPhong.MaPhieu}', '${phieuDatPhong.TenKhachHang}', '${phieuDatPhong.SDT}', '${phieuDatPhong.Email}', '${phieuDatPhong.DiaChi}',
-            '${phieuDatPhong.SoNguoiLon}', '${phieuDatPhong.SoTreEm}', '${phieuDatPhong.NgayDenNhan}', '${phieuDatPhong.NgayTra}', '${phieuDatPhong.MaLoaiPhong}',
-            , '${phieuDatPhong.MaDichVu}', '${phieuDatPhong.GhiChu}')`;
+        let insertRoom = await pool.request()
+        .input('MaPhieu', sql.VarChar, phieuDatPhong.MaPhieu)
+        .input('TenKhachHang', sql.NVarChar, phieuDatPhong.TenKhachHang)
+        .input('SDT', sql.VarChar, phieuDatPhong.SDT)
+        .input('Email', sql.VarChar, phieuDatPhong.Email)
+        .input('DiaChi', sql.NVarChar, phieuDatPhong.DiaChi)
+        .input('SoNguoiLon', sql.TinyInt, phieuDatPhong.SoNguoiLon)
+        .input('SoTreEm',sql.TinyInt, phieuDatPhong.SoTreEm)
+        .input('NgayDenNhan', sql.Date, phieuDatPhong.NgayDenNhan)
+        .input('NgayTra', sql.Date, phieuDatPhong.NgayTra)
+        .input('MaLoaiPhong', sql.VarChar, phieuDatPhong.MaLoaiPhong)
+        .input('MaDichVu', sql.VarChar, phieuDatPhong.MaDichVu)
+        .input('GhiChu', sql.NVarChar, phieuDatPhong.GhiChu)
+        .output('RESULT', 'Xảy ra lỗi không xác định')
 
-        let result = await pool.request().query(query);
-        return result;
+        .execute('INSERT_PhieuDatPhong')
+        return insertRoom.recordsets;
+
     } catch (error) {
         console.log(error);
     }
